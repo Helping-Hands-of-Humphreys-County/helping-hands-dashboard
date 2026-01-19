@@ -1,0 +1,43 @@
+# --- Project-specific ---
+# Planning doc should not be versioned
+Helping Hands Dashboard Planning.md
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- VS/VS Code ---
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# --- .NET ---
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ASP.NET local-only configs (if you create them)
+**/appsettings.Local.json
+
+# --- Node / frontend ---
+**/node_modules/
+**/dist/
+**/build/
+**/.cache/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Test artifacts ---
+coverage/

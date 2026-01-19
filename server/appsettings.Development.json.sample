@@ -1,0 +1,13 @@
+{
+  "Smtp": {
+    "Host": "smtp.example.com",
+    "Port": "587",
+    "Username": "smtp-user",
+    "Password": "smtp-pass",
+    "From": "no-reply@helping-hands.local",
+    "EnableSsl": "true"
+  },
+  "Frontend": {
+    "BaseUrl": "http://localhost:5173"
+  }
+}

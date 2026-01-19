@@ -1,0 +1,6 @@
+@HelpingHands.Server_HostAddress = http://localhost:5185
+
+GET {{HelpingHands.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,12 @@
+// Helping Hands theme overrides (Bootstrap SCSS)
+
+@use "bootstrap/scss/bootstrap" with (
+	$primary: #27306B,
+	$secondary: #FCB136,
+	$warning: #FCB136,
+	$danger: #F04E31,
+	$success: #2E9E6F,
+	$info: #2D9CDB,
+	$light: #F8F9FC,
+	$dark: #0F1333
+);

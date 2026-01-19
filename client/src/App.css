@@ -1,0 +1,81 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Public home logo circle */
+.public-home-logo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: #fbfcfd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Rich text markdown editor contrast styling */
+.rich-markdown-editor {
+  background: #f8fafc; /* slightly off-white to contrast against page */
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 1px 4px rgba(16,24,40,0.06);
+}
+
+.rich-markdown-editor .mdx-editor {
+  background: transparent !important; /* let wrapper color show */
+}
+
+.rich-markdown-editor .mdx-toolbar {
+  background: transparent;
+}
+
+/* Left-align editor content and markdown output */
+.rich-markdown-editor {
+  text-align: left;
+}
+.rich-markdown-editor .mdx-editor {
+  text-align: left;
+}
+.markdown-viewer {
+  text-align: left;
+}

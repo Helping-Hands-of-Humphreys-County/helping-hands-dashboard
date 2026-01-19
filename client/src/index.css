@@ -1,0 +1,71 @@
+:root {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #132144;
+  background-color: #f5f6fb;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f5f6fb;
+  color: #132144;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  font-weight: 600;
+  color: #27306b;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #1c244f;
+}
+
+.table th {
+  white-space: nowrap;
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .container,
+  .container-fluid {
+    width: 100% !important;
+    padding: 0 12px !important;
+  }
+
+  .navbar,
+  .offcanvas,
+  .d-print-none {
+    display: none !important;
+  }
+
+  .card {
+    box-shadow: none !important;
+    border-color: #cbd3dc !important;
+  }
+
+  .table {
+    font-size: 12px;
+  }
+
+  button,
+  .btn,
+  input,
+  select,
+  textarea {
+    box-shadow: none !important;
+  }
+}
