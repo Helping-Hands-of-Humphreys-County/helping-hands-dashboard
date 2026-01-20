@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting…</title>
+  <script>
+    // Fallback for SPA refresh/deep-link on hosts that ignore _redirects.
+    // Loads the main app shell (index.html) while preserving the current URL.
+    fetch('/index.html')
+      .then(function (res) { return res.text(); })
+      .then(function (html) {
+        document.open();
+        document.write(html);
+        document.close();
+        // Keep the same path in history so React Router can handle it.
+        history.replaceState(null, '', window.location.href);
+      })
+      .catch(function () {
+        // If even this fails, send the user home.
+        window.location.replace('/');
+      });
+  </script>
+</head>
+<body>
+</body>
+</html>
