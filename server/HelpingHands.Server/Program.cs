@@ -38,6 +38,8 @@ builder.Services.AddAuthorization();
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromHours(12);
+    options.SlidingExpiration = true;
     if (builder.Environment.IsDevelopment())
     {
         // Local dev: allow http cookies so Vite proxy works without https
