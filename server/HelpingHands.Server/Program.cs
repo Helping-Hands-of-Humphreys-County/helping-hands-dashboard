@@ -70,7 +70,9 @@ builder.Services.AddCors(options =>
         policy
             .WithOrigins(
                 "http://localhost:5173",
-                "http://127.0.0.1:5173")
+                "http://127.0.0.1:5173",
+                "https://helpinghandsofhumphreyscounty.org",
+                "https://www.helpinghandsofhumphreyscounty.org")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
