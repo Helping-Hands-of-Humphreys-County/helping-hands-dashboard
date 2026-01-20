@@ -45,6 +45,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setIsDisabled(true)
       } else {
         setUser(me)
+        // Re-fetch with the issued auth cookie to validate the session and populate any server-derived fields.
+        await refreshMe()
       }
     } finally {
       setIsLoading(false)
