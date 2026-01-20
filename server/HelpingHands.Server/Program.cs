@@ -3,6 +3,7 @@ using HelpingHands.Server.Infrastructure;
 using HelpingHands.Server.Models;
 using HelpingHands.Server.Services;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -85,7 +86,7 @@ builder.Services.AddCors(options =>
 // Persist data-protection keys so auth cookies survive container restarts.
 builder.Services.AddDataProtection()
     .SetApplicationName("HelpingHandsDashboard")
-    .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, "keys")));
+    .PersistKeysToDbContext<ApplicationDbContext>();
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<SiteInfoService>();

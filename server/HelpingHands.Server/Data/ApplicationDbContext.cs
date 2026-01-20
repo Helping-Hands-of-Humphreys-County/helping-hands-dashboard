@@ -1,4 +1,5 @@
 using HelpingHands.Server.Models;
+using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace HelpingHands.Server.Data;
 
 public class ApplicationDbContext
-    : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>
+    : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>, IDataProtectionKeyContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
@@ -21,6 +22,7 @@ public class ApplicationDbContext
     public DbSet<ApplicationBillRequest> ApplicationBillRequests => Set<ApplicationBillRequest>();
     public DbSet<AssistanceEvent> AssistanceEvents => Set<AssistanceEvent>();
     public DbSet<AssistanceItem> AssistanceItems => Set<AssistanceItem>();
+    public DbSet<DataProtectionKey> DataProtectionKeys { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -29,6 +31,11 @@ public class ApplicationDbContext
         builder.Entity<AppUser>(entity =>
         {
             entity.Property(x => x.DisplayName).HasMaxLength(200);
+        });
+
+        builder.Entity<DataProtectionKey>(entity =>
+        {
+            entity.ToTable("DataProtectionKeys");
         });
 
         builder.Entity<SiteInfo>(entity =>
