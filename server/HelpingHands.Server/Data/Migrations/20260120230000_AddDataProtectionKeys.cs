@@ -1,8 +1,13 @@
+using HelpingHands.Server.Data;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HelpingHands.Server.Data.Migrations;
 
+// Add explicit metadata because the designer file was removed.
+[DbContext(typeof(ApplicationDbContext))]
+[Migration("20260120230000_AddDataProtectionKeys")]
 public partial class AddDataProtectionKeys : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)

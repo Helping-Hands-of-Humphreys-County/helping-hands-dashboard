@@ -3,6 +3,8 @@ import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Stack from 'react-bootstrap/Stack'
+import Toast from 'react-bootstrap/Toast'
+import ToastContainer from 'react-bootstrap/ToastContainer'
 import { useSiteInfo, useSiteInfoMutations } from '../hooks/useSiteInfo'
 import type { UpdateSiteInfoRequest } from '../types/siteInfo'
 import RichTextMarkdownEditor from '../components/RichTextMarkdownEditor'
@@ -63,20 +65,25 @@ function SiteInfoEditorForm({
   onSave: (req: UpdateSiteInfoRequest) => Promise<void>
 }) {
   const [form, setForm] = useState<UpdateSiteInfoRequest>(initial)
-  const [saved, setSaved] = useState(false)
+  const [toast, setToast] = useState<{ show: boolean; message: string; variant: 'success' | 'danger' } | null>(
+    null,
+  )
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setSaved(false)
-    await onSave(form)
-    setSaved(true)
+    try {
+      await onSave(form)
+      setToast({ show: true, message: 'Site info saved.', variant: 'success' })
+    } catch (err) {
+      console.error(err)
+      setToast({ show: true, message: 'Save failed. Please try again.', variant: 'danger' })
+    }
   }
 
   return (
     <div style={{ maxWidth: 900 }}>
       <h1 className="h3 mb-3">Site Info</h1>
 
-      {saved && <Alert variant="success">Saved.</Alert>}
       {isSaveError && <Alert variant="danger">Save failed.</Alert>}
 
       <Form onSubmit={onSubmit}>
@@ -142,6 +149,14 @@ function SiteInfoEditorForm({
           </div>
         </Stack>
       </Form>
+
+      <ToastContainer position="bottom-end" className="p-3">
+        {toast?.show && (
+          <Toast bg={toast.variant} onClose={() => setToast(null)} show={toast.show} delay={3500} autohide>
+            <Toast.Body className="text-white">{toast.message}</Toast.Body>
+          </Toast>
+        )}
+      </ToastContainer>
     </div>
   )
 }
